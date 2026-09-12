@@ -1,0 +1,35 @@
+- name: "Symlink dot files"
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ lookup('env', 'HOME') }}/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ role_path }}/files/.*"
+
+# htop
+
+- name: 'Create the directory "{{ lookup("env", "HOME") }}/.config/htop"' # noqa: name[template]
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.config/htop"
+    state: directory
+    mode: '0755'
+
+- name: 'Copy the file "{{ lookup("env", "HOME") }}/.config/htop/htoprc"' # noqa: name[template]
+  ansible.builtin.copy:
+    src: htoprc
+    dest: "{{ lookup('env', 'HOME') }}/.config/htop/htoprc"
+    mode: '0600'
+
+# .aws/config
+
+- name: 'Create the directory "{{ lookup("env", "HOME") }}/.aws"' # noqa: name[template]
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.aws"
+    state: directory
+    mode: '0755'
+
+- name: 'Copy the file "{{ lookup("env", "HOME") }}/.aws/config"' # noqa: name[template]
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/aws/config"
+    dest: "{{ lookup('env', 'HOME') }}/.aws/config"
+    state: link

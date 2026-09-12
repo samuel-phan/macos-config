@@ -1,0 +1,10 @@
+# IDE
+/.idea/
+
+# Misc
+/tmp/
+
+# Ansible
+.ansible
+vault_become_password.yml
+vault-password

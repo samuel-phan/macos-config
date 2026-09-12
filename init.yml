@@ -1,0 +1,23 @@
+- name: Configuring macOS
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Install packages
+      ansible.builtin.import_role:
+        name: packages
+      tags: packages
+
+    - name: Install fonts
+      ansible.builtin.import_role:
+        name: fonts
+      tags: fonts
+
+    - name: Configure zsh
+      ansible.builtin.import_role:
+        name: zsh
+      tags: zsh
+
+    - name: Configure dot files
+      ansible.builtin.import_role:
+        name: dotfiles
+      tags: dotfiles

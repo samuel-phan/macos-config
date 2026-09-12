@@ -1,0 +1,6 @@
+set ignore-case = smart-case
+set log-options = --show-signature
+set diff-options = --show-signature
+
+bind main ! !git revert %(commit)
+bind diff 7 !git diff %(commit)^ %(commit)

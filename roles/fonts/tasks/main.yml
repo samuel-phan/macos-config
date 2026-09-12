@@ -1,0 +1,16 @@
+# Meslo fonts (for Powerlevel10k)
+
+- name: Download Meslo fonts
+  ansible.builtin.get_url:
+    url: "{{ item.src }}"
+    dest: "{{ lookup('env', 'HOME') }}/Library/Fonts/{{ item.dest }}"
+    mode: '0644'
+  loop:
+    - src: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+      dest: "MesloLGS NF Regular.ttf"
+    - src: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+      dest: "MesloLGS NF Bold.ttf"
+    - src: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+      dest: "MesloLGS NF Italic.ttf"
+    - src: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+      dest: "MesloLGS NF Bold Italic.ttf"

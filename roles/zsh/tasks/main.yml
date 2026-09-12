@@ -1,0 +1,20 @@
+# Oh My Zsh
+
+- name: Install Oh My Zsh
+  ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+
+- name: Create Oh My Zsh custom completion dir
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/custom/completions"
+    state: directory
+    mode: '0775'
+
+# Powerlevel10k
+
+- name: Install Powerlevel10k # noqa: latest[git]
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    dest: "{{ lookup('ansible.builtin.env', 'ZSH_CUSTOM') | default(lookup('ansible.builtin.env', 'HOME') ~ '/.oh-my-zsh/custom/themes/powerlevel10k', true) }}"
+    depth: 1
