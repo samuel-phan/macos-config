@@ -50,8 +50,13 @@ You have 2 choices to active the Python virtualenv:
     brew install direnv
 
     mkdir -p ~/.config/direnv
-    # TODO: fix this
     ln -s "${PWD}/roles/dotfiles/files/direnv/direnvrc" ~/.config/direnv
+    ```
+
+    Check that in your `~/.zshrc`, the Oh My Zsh plugin `direnv` is enabled:
+
+    ```
+    plugins=(direnv git)
     ```
 
     - Open a new shell.

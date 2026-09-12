@@ -6,6 +6,20 @@
   with_fileglob:
     - "{{ role_path }}/files/.*"
 
+# direnv
+
+- name: 'Create the directory "{{ lookup("env", "HOME") }}/.config/direnv"' # noqa: name[template]
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.config/direnv"
+    state: directory
+    mode: '755'
+
+- name: 'Create the symlink "{{ lookup("env", "HOME") }}/.config/direnv/direnvrc"' # noqa: name[template]
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/direnv/direnvrc"
+    dest: "{{ lookup('env', 'HOME') }}/.config/direnv/direnvrc"
+    state: link
+
 # htop
 
 - name: 'Create the directory "{{ lookup("env", "HOME") }}/.config/htop"' # noqa: name[template]

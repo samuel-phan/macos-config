@@ -1,0 +1,9 @@
+# Python venv
+layout_activate_venv() {
+  if [ -d ".venv" ]; then
+    echo "=> Found .venv, activating..."
+    source $(pwd)/.venv/bin/activate
+  else
+    echo "=> No .venv found in this directory."
+  fi
+}
