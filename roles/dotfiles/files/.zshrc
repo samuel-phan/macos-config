@@ -129,10 +129,11 @@ alias sudo="sudo "
 # LSCOLORS (man ls)
 export LSCOLORS=Exgxcxdxbxegedabagacad
 
-# aws
-alias awsd="source _awsd"
-source _awsd_autocomplete
-export AWS_PROFILE=$(cat ~/.awsd)
+# awsd
+eval "$(awsd init zsh)"
+if [[ -f ~/.awsd ]]; then
+    export AWS_PROFILE=$(cat ~/.awsd)
+fi
 
 # gcloud
 source /opt/homebrew/share/google-cloud-sdk/*.zsh.inc
