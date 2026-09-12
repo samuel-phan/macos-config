@@ -84,6 +84,12 @@ Create a `vault-password` file:
 LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*' < /dev/urandom | head -c 32 > vault-password
 ```
 
+Create a file `inventory/host_vars/localhost/vault_become_password.yml`:
+
+```shell
+echo "vault_ansible_become_password: CHANGEME" > inventory/host_vars/localhost/vault_become_password.yml
+```
+
 Encrypt the file `inventory/host_vars/localhost/vault_become_password.yml` with Ansible Vault:
 
 ```shell
