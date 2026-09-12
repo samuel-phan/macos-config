@@ -28,8 +28,16 @@
     state: directory
     mode: '0755'
 
-- name: 'Copy the file "{{ lookup("env", "HOME") }}/.aws/config"' # noqa: name[template]
+- name: 'Symlink the file "{{ lookup("env", "HOME") }}/.aws/config"' # noqa: name[template]
   ansible.builtin.file:
     src: "{{ role_path }}/files/aws/config"
     dest: "{{ lookup('env', 'HOME') }}/.aws/config"
+    state: link
+
+# .gnupg/gpg-agent.conf
+
+- name: 'Symlink the file "{{ lookup("env", "HOME") }}/.gnupg/gpg-agent.conf"' # noqa: name[template]
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/gnupg/gpg-agent.conf"
+    dest: "{{ lookup('env', 'HOME') }}/.gnupg/gpg-agent.conf"
     state: link

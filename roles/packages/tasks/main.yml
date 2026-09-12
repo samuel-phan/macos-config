@@ -26,6 +26,7 @@
       - neovim
       - netcat
       - openssl
+      - pinentry-mac
       - podman-desktop
       - pre-commit
       - python3
